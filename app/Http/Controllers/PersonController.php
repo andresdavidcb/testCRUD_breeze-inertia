@@ -78,4 +78,12 @@ class PersonController extends Controller
 
         return Inertia::render('People/Graphics',['data' => $data]);
     }
+
+    public function reports(){
+        //dd('Gráficos');
+        
+        $data= Person::selectRaw('age, count(*) as Total')->groupBy('age')->get();
+
+        return Inertia::render('People/Reports',['data' => $data]);
+    }
 }

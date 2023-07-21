@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('people', PersonController::class);
 
     Route::get('/graphics', [PersonController::class, 'graphics'])->name('graphics');
+    Route::get('/reports', [PersonController::class, 'reports'])->name('reports');
 });
 
 require __DIR__.'/auth.php';

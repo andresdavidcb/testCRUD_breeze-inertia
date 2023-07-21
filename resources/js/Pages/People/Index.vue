@@ -1,6 +1,8 @@
 
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head } from '@inertiajs/vue3';
+import {ref} from 'vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
  
