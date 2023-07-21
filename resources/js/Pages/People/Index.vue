@@ -4,10 +4,17 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net';
-
+import {ref} from 'vue';
 
 
 DataTable.use(DataTablesCore);
+const props= defineProps({
+    people:{type:Object},
+    
+})
+
+const dataT =[[1,'Alex'],[2,'john']]
+
 
 </script>
 
@@ -15,27 +22,35 @@ DataTable.use(DataTablesCore);
     <Head title="Personas" />
 
     <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Personas</h2>
-        </template>
-
-        <div class="py-12">
+        
+        <div class="py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <DataTable :data="people" class="display" :columns="columns" :options="{select: true}"   ajax="/data.json"  width="90%">
-                        
-                            
-                    </DataTable>
+                    
+                    <DataTable data=""></DataTable>
 
-                    {{ people }}
+                   
+
+                    <table class ="table-auto w-full">
+                        <thead class="px-10 bg-black text-white" >
+                            <th>Id</th><th>Nombre</th><th>Edad</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="d in people" :key="d.id" class ="border">
+                                <td class="px-4 py-2 border">{{ d.id }}</td>
+                                <td class="px-4 py-2 border">{{ d.name }}</td>
+                                <td class="px-4 py-2 border">{{ d.age }}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </div>
+
+                
             </div>
         </div>
     </AuthenticatedLayout>
 </template>
 
-<script>
-export default {
-    props:['people']
-}
-</script>
+
