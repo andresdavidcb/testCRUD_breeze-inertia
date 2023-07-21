@@ -16,8 +16,9 @@ class PersonController extends Controller
     {
         //dd('It works');
         $people= Person::all();
+        $Tpeople = [1,'Ana',14,'ana@mail.com'];
         
-        return Inertia::render('People/Index',['people' => $people]);
+        return Inertia::render('People/Index',compact(['people','Tpeople']));
         /*
         return Inertia::render('Departments/Index',['people' => $people]);*/
     }
